@@ -1,0 +1,16 @@
+--create table dishes
+--(
+--dishId INTEGER not null,
+--name varchar(255) not null,
+--mealTime varchar(255),
+--containsRice boolean,
+--needSide boolean,
+--primary key (dishId)
+--) as select * from CSVREAD('classpath:dishMaster.csv');
+--
+--create table sideDishes
+--(
+--sideId INTEGER not null,
+--name varchar(255) not null,
+--goesWith INTEGER
+--) as select * from CSVREAD('classpath:sideMaster.csv');

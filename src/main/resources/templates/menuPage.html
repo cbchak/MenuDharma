@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr th:if="${weekMenu.isEmpty()}">
+        <td class="text-center" colspan="3">No Records found. Add some...!</td>
+    </tr>
+    <tr>
+        <th>Date</th>
+        <th>Breakfast</th>
+        <th>Breakfast Side</th>
+        <th>Lunch</th>
+        <th>Lunch Side</th>
+    </tr>
+    <tr th:each="weekDate : ${weekMenu}">
+        <td class="align-middle" th:text="${weekDate.date}"></td>
+        <td class="align-middle" th:text="${weekDate.breakfast}"></td>
+        <td class="align-middle" th:text="${weekDate.breakfastSide}"></td>
+        <td class="align-middle" th:text="${weekDate.lunch}"></td>
+        <td class="align-middle" th:text="${weekDate.lunchSide}"></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,8 @@
+-- Methods needed
+getEligibleItems() -> take mealtime, return a HashMap of dishes, sideDishes eligible to be made
+calcDaysSince() -> take dishID, sideDishID, return days since last made, 0 if not made still
+FindDishesForDay() -> takes date, returns dish side dish for both breakfast and lunch
+putinschedule() -> repo.save
+
+
+
