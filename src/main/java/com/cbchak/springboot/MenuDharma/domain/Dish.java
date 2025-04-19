@@ -3,15 +3,16 @@ package com.cbchak.springboot.MenuDharma.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 
-@Entity
+@Entity(name = "dishMaster")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class dishes {
+public class Dish {
     @Id
     private Integer dishId;
     @Column
