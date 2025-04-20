@@ -1,7 +1,7 @@
 package com.cbchak.springboot.MenuDharma.controller;
 
 import com.cbchak.springboot.MenuDharma.domain.Dish;
-import com.cbchak.springboot.MenuDharma.repository.DishRepo;
+import com.cbchak.springboot.MenuDharma.repository.DishRepoInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,37 +15,33 @@ import java.util.Optional;
 public class ApiController {
 
     @Autowired
-    private DishRepo dishRepo;
+    private DishRepoInterface dishService;
 
     @GetMapping
     public List<Dish> getAllDishes() {
-        return dishRepo.findAll();
+        return dishService.getAllDishes();
     }
 
-    @GetMapping("/{Id}")
-    public Optional<Dish> getDishById(@PathVariable Integer Id) {
-        return dishRepo.findById(Id);
+    @GetMapping("/{id}")
+    public Optional<Dish> getDishById(@PathVariable Integer id) {
+        return dishService.getDishById(id);
     }
 
     @PostMapping
     public ResponseEntity<Dish> addDish(@RequestBody Dish dish) {
-        Dish savedDish = dishRepo.save(dish);
+        Dish savedDish = dishService.addDish(dish);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedDish);
     }
 
-    @PutMapping("/{Id}")
-    public ResponseEntity<Dish> updateDish(@PathVariable Integer Id, @RequestBody Dish dish){
-        Dish targetDish = dishRepo.findById(Id).orElseThrow();
-        targetDish.setDishId(dish.getDishId());
-        targetDish.setName(dish.getName());
-        targetDish.setMealTime(dish.getMealTime());
-        dishRepo.save(targetDish);
-        return ResponseEntity.status(HttpStatus.OK).body(targetDish);
+    @PutMapping("/{id}")
+    public ResponseEntity<Dish> updateDish(@PathVariable Integer id, @RequestBody Dish dish){
+        Dish updatedDish = dishService.updateDish(id, dish);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedDish);
     }
 
-    @DeleteMapping("/{Id}")
-    public ResponseEntity<Void> deleteById(@PathVariable Integer Id) {
-        dishRepo.deleteById(Id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Integer id) {
+        dishService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 

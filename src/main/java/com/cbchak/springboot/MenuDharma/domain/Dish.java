@@ -1,10 +1,11 @@
 package com.cbchak.springboot.MenuDharma.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.cbchak.springboot.MenuDharma.enums.DishTypes;
+import com.cbchak.springboot.MenuDharma.enums.MealTimes;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity(name = "dishMaster")
 @Getter
@@ -14,13 +15,13 @@ import lombok.*;
 @ToString
 public class Dish {
     @Id
+    @NonNull
     private Integer dishId;
     @Column
+    @NonNull
     private String name;
     @Column
-    private String mealTime;
+    private String mealTimes;
     @Column
-    private boolean containsRice;
-    @Column
-    private boolean needSide;
+    private String dishType;
 }

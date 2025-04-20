@@ -3,8 +3,7 @@ create table dishMaster
 (
 dishId INTEGER not null,
 name varchar(255) not null,
-mealTime varchar(255),
-containsRice boolean,
-needSide boolean,
+mealTimes varchar(255),
+dishType varchar(255),
 primary key (dishId)
 );
